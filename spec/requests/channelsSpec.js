@@ -22,10 +22,10 @@ describe('GET', () => {
 
   describe('/channels/:id', () => {
     it('retrieves just one channel', () => {
-      return request.get(`${localhost}/channels/UCeRY0LppLWdxWAymRANTb0g`)
+      return request.get(`${localhost}/channels/2`)
         .then((channel) => {
-          expect(channel.data.data.id).toEqual('UCeRY0LppLWdxWAymRANTb0g')
-          expect(channel.data.data.name).toEqual('Cloud Academy')
+          expect(channel.data.data.id).toEqual('2')
+          expect(channel.data.data.name).toEqual('Xuxa')
         })
     })
   })
