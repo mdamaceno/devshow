@@ -18,7 +18,8 @@
   "homepage": "https://github.com/mdamaceno/devshow#readme",
   "dependencies": {
     "axios": "^0.16.2",
-    "express": "^4.16.1"
+    "express": "^4.16.1",
+    "qs": "^6.5.1"
   },
   "devDependencies": {
     "jasmine": "^2.8.0"

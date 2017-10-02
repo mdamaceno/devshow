@@ -12,8 +12,15 @@ describe('GET', () => {
   })
 
   describe('/channels', () => {
-    it('retrieves a list of  channels', () => {
+    it('retrieves a list of channels', () => {
       return request.get(`${localhost}/channels`)
+        .then((channels) => {
+          expect(channels.data.data.length).toEqual(3)
+        })
+    })
+
+    it('retrieves a list based on tag', () => {
+      return request.get(`${localhost}/channels?tags=music,lyrics`)
         .then((channels) => {
           expect(channels.data.data.length).toEqual(2)
         })
