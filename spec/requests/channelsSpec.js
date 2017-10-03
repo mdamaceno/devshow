@@ -25,6 +25,13 @@ describe('GET', () => {
           expect(channels.data.data.length).toEqual(2)
         })
     })
+
+    it('retrieves a list based on language', () => {
+      return request.get(`${localhost}/channels?lang=es`)
+        .then((channels) => {
+          expect(channels.data.data.length).toEqual(1)
+        })
+    })
   })
 
   describe('/channels/:id', () => {
