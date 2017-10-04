@@ -1,12 +1,28 @@
 let resource = (channel) => {
-  channel.tags = channel.tags.split(',')
+  if (!channel.hasOwnProperty('tags')) {
+    channel.tags = []
+  } else {
+    channel.tags = channel.tags.split(',')
+  }
+
+  if (channel.tags.length === 1 && channel.tags[0] === '') {
+    channel.tags = []
+  }
 
   return channel
 }
 
 let collection = (channels) => {
   channels = channels.map((c) => {
-    c.tags = c.tags.split(',')
+    if (!c.hasOwnProperty('tags')) {
+      c.tags = []
+    } else {
+      c.tags = c.tags.split(',')
+    }
+
+    if (c.tags.length === 1 && c.tags[0] === '') {
+      c.tags = []
+    }
 
     return c
   })

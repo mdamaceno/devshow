@@ -4,6 +4,7 @@
   "description": "",
   "main": "serve.js",
   "scripts": {
+    "dev": "node .",
     "test": "NODE_ENV=test ./node_modules/.bin/jasmine"
   },
   "repository": {
