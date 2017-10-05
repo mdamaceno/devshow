@@ -1,7 +1,8 @@
 let express = require('express')
 let app = express()
-let qs = require('qs')
+let fetch = require('node-fetch')
 let parseCSV = require('../helpers/parseCSV')
+let parseXML = require('../helpers/parseXML')
 let httpError = require('../helpers/httpErrors')
 let channelsFilepathCSV = require('../helpers/setDatabase')
 let transform = require('../transformers/channel')
@@ -41,6 +42,16 @@ app.get('/channels', (req, res) => {
 
       res.json({ data: channels })
     })
+    .catch((err) => res.status(500).json(httpError.internalServerError(err)))
+})
+
+app.get('/channels/:id/feed', (req, res) => {
+  let result = fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${req.params.id}`)
+
+  result
+    .then(r => r.text())
+    .then(x => parseXML(x))
+    .then(d => res.json({ data: d.channel }))
     .catch((err) => res.status(500).json(httpError.internalServerError(err)))
 })
 
